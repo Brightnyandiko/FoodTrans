@@ -72,10 +72,10 @@ class LoginPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 20,),
+            const SizedBox(height: 10,),
 
             Container(
-              margin: EdgeInsets.only(right: 18),
+              margin: EdgeInsets.only(right: 5),
               child: MaterialButton(
                 onPressed: () {},
                 child: Row(
@@ -94,8 +94,22 @@ class LoginPage extends StatelessWidget {
               ),
             ),
 
-            MaterialButton(onPressed: () {})
+            const SizedBox(height: 15,),
 
+            Container(
+              margin: EdgeInsets.only(left: 17),
+              width: 300,
+              height: 50,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll<Color>(Colors.deepOrangeAccent)
+                ),
+                onPressed: () {},
+                // color: Colors.deepOrangeAccent,
+                // textColor: Colors.white,
+                child: Text("Sign in", style: TextStyle(color: Colors.white),),
+              ),
+            )
           ],
         ),
       ),

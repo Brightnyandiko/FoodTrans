@@ -10,13 +10,92 @@ class LoginPage extends StatelessWidget {
       body: Container(
         margin: EdgeInsets.only(left: 18, top: 50),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Login to your\naccount",
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30, color: Colors.black),
             ),
             const SizedBox(height: 10,),
-            Text("Please Sign in to your account")
+
+            Text("Please Sign in to your account"),
+
+             const SizedBox(height: 30,),
+
+            Container(
+              margin: EdgeInsets.only(right: 18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Email Address",
+                    textAlign: TextAlign.start,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+
+                  const SizedBox(height: 10,),
+
+                  TextField(
+                    decoration: InputDecoration(
+                        hintText: "Enter Email",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)
+                        )
+                    )
+                  )
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20,),
+
+            Container(
+              margin: EdgeInsets.only(right: 18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Password",
+                    textAlign: TextAlign.start,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+
+                  const SizedBox(height: 10,),
+
+                  TextField(
+                      decoration: InputDecoration(
+                          hintText: "Enter Password",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)
+                          )
+                      )
+                  )
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20,),
+
+            Container(
+              margin: EdgeInsets.only(right: 18),
+              child: MaterialButton(
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "Forgot password?",
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.deepOrangeAccent,
+                          fontWeight: FontWeight.w500
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            MaterialButton(onPressed: () {})
+
           ],
         ),
       ),

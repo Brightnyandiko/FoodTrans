@@ -109,6 +109,13 @@ class LoginPage extends StatelessWidget {
                 // textColor: Colors.white,
                 child: Text("Sign in", style: TextStyle(color: Colors.white),),
               ),
+            ),
+
+            const SizedBox(height: 10,),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+
             )
           ],
         ),

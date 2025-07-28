@@ -3,10 +3,11 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_trans/app/view/app.dart';
-import 'package:food_trans/pages/login_page.dart';
+import 'package:food_trans/pages/login/login_page.dart';
 // import 'package:food_trans/theme.dart';
 
 import '../bloc/app_bloc.dart';
+import '../routes/routes.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -53,11 +54,11 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: FlowBuilder<AppStatus>(
-      //   state: context.select((AppBloc bloc) => bloc.state.status),
-      //   onGeneratePages: onGenerateAppViewPages,
-      // ),
-      home: LoginPage(),
+      home: FlowBuilder<AppStatus>(
+        state: context.select((AppBloc bloc) => bloc.state.status),
+        onGeneratePages: onGenerateAppViewPages,
+      ),
+      // home: LoginPage(),
       theme: ThemeData(
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(foregroundColor: Colors.deepOrangeAccent),

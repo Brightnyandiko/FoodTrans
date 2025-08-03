@@ -8,6 +8,10 @@ import '../../sign_up/cubit/sign_up_cubit.dart';
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
 
+  static Route<void> route() {
+    return MaterialPageRoute<void>(builder: (_) => const SignUpPage());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +24,10 @@ class SignUpPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Login to your\naccount",
+                "Create your new\naccount",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30, color: Colors.black),
               ),
-              const SizedBox(height: 10,),
+              // const SizedBox(height: 10,),
 
               Text("Please Sign in to your account"),
 

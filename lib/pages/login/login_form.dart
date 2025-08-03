@@ -37,7 +37,7 @@ class LoginForm extends StatelessWidget {
             children: [
               const SizedBox(height: 30),
               _EmailInput(),
-              const SizedBox(height: 20),
+              const SizedBox(height: 5),
               _PasswordInput(),
               const SizedBox(height: 10),
               _LoginButton(),
@@ -143,13 +143,13 @@ class _LoginButton extends StatelessWidget {
     );
 
     return Container(
-      margin: EdgeInsets.only(left: 17),
+      // margin: EdgeInsets.only(left: 10),
       width: 300,
       height: 50,
       child: ElevatedButton(
         key: const Key('loginForm_continue_raisedButton'),
         style: ButtonStyle(
-            backgroundColor: WidgetStatePropertyAll<Color>(Colors.deepOrangeAccent)
+            backgroundColor: WidgetStatePropertyAll<Color>(Colors.deepOrangeAccent),
         ),
         onPressed: isValid
             ? () => context.read<LoginCubit>().logInWithCredentials()
@@ -167,7 +167,7 @@ class _GoogleLoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       key: const Key('loginForm_googleLogin_raisedButton'),
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
             onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
@@ -182,18 +182,20 @@ class _SignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final theme = Theme.of(context);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Dont have an account?"),
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text("Don't have an account?"),
 
-        const SizedBox(width: 2,),
+          // const SizedBox(width: 1,),
 
-        MaterialButton(
-          onPressed: () => Navigator.of(context).pushNamed("sign_up_page.dart"),
-          child: Text("Register"),
-        )
-      ],
+          MaterialButton(
+            onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
+            child: Text("Create Account", style: TextStyle(color: Colors.deepOrangeAccent),),
+          )
+        ],
+      ),
     );
   }
 }

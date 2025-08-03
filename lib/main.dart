@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food_trans/pages/login/login_page.dart';
+import 'firebase_options.dart';
 
 import 'app/view/app.dart';
 
@@ -10,7 +11,10 @@ Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
 
-  await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   final authenticationRepository = AuthenticationRepository();
   await authenticationRepository.user.first;

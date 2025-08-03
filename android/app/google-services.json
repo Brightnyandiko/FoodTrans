@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "613623259110",
+    "project_id": "food-trans",
+    "storage_bucket": "food-trans.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613623259110:android:99daef18609e91dc5b0027",
+        "android_client_info": {
+          "package_name": "com.example.food_trans"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613623259110-n80sdtf8vrescdefd9kivhavatss0hc9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBynFMyba93J2NoEN9ZafXEKwG2EP12940"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613623259110-n80sdtf8vrescdefd9kivhavatss0hc9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "613623259110-v1j46668160f2ghh8ciurfairg5br36a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.foodTrans"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

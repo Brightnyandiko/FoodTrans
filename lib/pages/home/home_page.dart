@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_trans/app/bloc/app_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,6 +35,10 @@ class HomePage extends StatelessWidget {
                     onPressed: (){},
                     child: Icon(Icons.notifications_none_rounded, size: 23, color: Colors.white,),
                   ),
+                  
+                  IconButton(
+                      onPressed: () => context.read<AppBloc>().add(const AppLogoutPressed()),
+                      icon: Icon(Icons.logout, color: Colors.white,))
                 ],
               ),
             ),

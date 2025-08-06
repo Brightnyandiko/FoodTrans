@@ -4,7 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_trans/login/cubit/login_cubit.dart';
 import 'package:formz/formz.dart';
 
-import '../sign_up/sign_up_page.dart';
+// import '../sign_up/sign_up_page.dart';
+import '../../sign_up/view/sign_up_page.dart';
 import 'login_page.dart';
 
 // import '../sign_up/sign_up_page.dart';

@@ -10,163 +10,166 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: 200,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage("assets/image34.png"),
-                fit: BoxFit.fill
-              )
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 15.0, right: 10.0, top: 40),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+      body: BlocProvider(
+        
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage("assets/image34.png"),
+                  fit: BoxFit.fill
+                )
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15.0, right: 10.0, top: 40),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        OutlinedButton(
+                          onPressed: (){}, child: Icon(Icons.search_rounded, size: 23, color: Colors.white,),
+                        ),
+
+                        const SizedBox(width: 10,),
+
+                        OutlinedButton(
+                          onPressed: (){},
+                          child: Icon(Icons.notifications_none_rounded, size: 23, color: Colors.white,),
+                        ),
+
+                        IconButton(
+                            onPressed: () => context.read<AppBloc>().add(const AppLogoutPressed()),
+                            icon: Icon(Icons.logout, color: Colors.white,))
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 15, top: 20), child: Column(
                     children: [
-                      OutlinedButton(
-                        onPressed: (){}, child: Icon(Icons.search_rounded, size: 23, color: Colors.white,),
-                      ),
-
-                      const SizedBox(width: 10,),
-
-                      OutlinedButton(
-                        onPressed: (){},
-                        child: Icon(Icons.notifications_none_rounded, size: 23, color: Colors.white,),
-                      ),
-
-                      IconButton(
-                          onPressed: () => context.read<AppBloc>().add(const AppLogoutPressed()),
-                          icon: Icon(Icons.logout, color: Colors.white,))
+                      Row(
+                        children: [
+                          Text(
+                            "Provide the best\nfood for you",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      )
                     ],
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 15, top: 20), child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Provide the best\nfood for you",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 15),
-            padding: EdgeInsets.all(15),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text("Find by Category", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            Container(
+              margin: EdgeInsets.only(top: 15),
+              padding: EdgeInsets.all(15),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text("Find by Category", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
 
-                    const SizedBox(width: 110,),
+                      const SizedBox(width: 110,),
 
-                    Text("See All", style: TextStyle(color: Colors.deepOrangeAccent),)
-                  ],
-                ),
+                      Text("See All", style: TextStyle(color: Colors.deepOrangeAccent),)
+                    ],
+                  ),
 
-                const SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.00),
-                          color: Colors.deepOrangeAccent
-                        ),
-                        child: Column(
-                          children: [
-                            Image(image: AssetImage("assets/burgericon.png"),),
-
-                            const SizedBox(height: 10,),
-
-                            Text("Burger", style: TextStyle(color: Colors.white),)
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.00),
                             color: Colors.deepOrangeAccent
-                        ),
-                        child: Column(
-                          children: [
-                            Image(image: AssetImage("assets/burgericon.png"),),
+                          ),
+                          child: Column(
+                            children: [
+                              Image(image: AssetImage("assets/burgericon.png"),),
 
-                            const SizedBox(height: 10,),
+                              const SizedBox(height: 10,),
 
-                            Text("Burger", style: TextStyle(color: Colors.white),)
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.00),
-                            color: Colors.deepOrangeAccent
-                        ),
-                        child: Column(
-                          children: [
-                            Image(image: AssetImage("assets/burgericon.png"),),
-
-                            const SizedBox(height: 10,),
-
-                            Text("Burger", style: TextStyle(color: Colors.white),)
-                          ],
+                              Text("Burger", style: TextStyle(color: Colors.white),)
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.00),
-                            color: Colors.deepOrangeAccent
-                        ),
-                        child: Column(
-                          children: [
-                            Image(image: AssetImage("assets/burgericon.png"),),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          padding: EdgeInsets.only(left: 17, right: 17, top: 10, bottom: 10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.00),
+                              color: Colors.deepOrangeAccent
+                          ),
+                          child: Column(
+                            children: [
+                              Image(image: AssetImage("assets/image24.png"),),
 
-                            const SizedBox(height: 10,),
+                              const SizedBox(height: 10,),
 
-                            Text("Burger", style: TextStyle(color: Colors.white),)
-                          ],
+                              Text("Taco", style: TextStyle(color: Colors.white),)
+                            ],
+                          ),
                         ),
                       ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          padding: EdgeInsets.only(left: 17, right: 17, top: 10, bottom: 10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.00),
+                              color: Colors.deepOrangeAccent
+                          ),
+                          child: Column(
+                            children: [
+                              Image(image: AssetImage("assets/image24.png"),),
+
+                              const SizedBox(height: 10,),
+
+                              Text("Pizza", style: TextStyle(color: Colors.white),)
+                            ],
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          padding: EdgeInsets.only(left: 17, right: 17, top: 10, bottom: 10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.00),
+                              color: Colors.deepOrangeAccent
+                          ),
+                          child: Column(
+                            children: [
+                              Image(image: AssetImage("assets/image23.png"),),
+
+                              const SizedBox(height: 10,),
+
+                              Text("Drink", style: TextStyle(color: Colors.white),)
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

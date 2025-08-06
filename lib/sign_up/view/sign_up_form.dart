@@ -4,9 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_trans/login/cubit/login_cubit.dart';
 import 'package:formz/formz.dart';
 
+import '../../login/view/login_page.dart';
 import '../../sign_up/cubit/sign_up_cubit.dart';
 import '../../util/sign_up_validation.dart';
-import '../login/login_page.dart';
+// import '../login/login_page.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({super.key});

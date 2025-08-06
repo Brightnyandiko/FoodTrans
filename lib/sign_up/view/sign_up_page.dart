@@ -1,7 +1,8 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_trans/pages/sign_up/sign_up_form.dart';
+import 'package:food_trans/sign_up/view/sign_up_form.dart';
+// import 'package:food_trans/pages/sign_up/sign_up_form.dart';
 
 import '../../sign_up/cubit/sign_up_cubit.dart';
 

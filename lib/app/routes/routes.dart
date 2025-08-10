@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 
+import '../../home/view/home_page.dart';
 import '../../login/view/login_page.dart';
-import '../../pages/home/home_page.dart';
+// import '../../pages/home/home_page.dart';
 // import '../../pages/login/login_page.dart';
 import '../bloc/app_bloc.dart';
 

@@ -1,10 +1,7 @@
 import 'package:formz/formz.dart';
 
 /// Validation errors for the [Password] [FormzInput].
-enum PasswordValidationError {
-  /// Generic invalid error.
-  invalid,
-}
+enum PasswordValidationError { empty, tooShort, invalid }
 
 /// {@template password}
 /// Form input for an password input.
@@ -14,16 +11,17 @@ class Password extends FormzInput<String, PasswordValidationError> {
   const Password.pure() : super.pure('');
 
   /// {@macro password}
-  const Password.dirty([super.value = '']) : super.dirty();
-
-  static final _passwordRegExp = RegExp(
-    r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$',
-  );
+  const Password.dirty([String value = '']) : super.dirty(value);
 
   @override
-  PasswordValidationError? validator(String? value) {
-    return _passwordRegExp.hasMatch(value ?? '')
-        ? null
-        : PasswordValidationError.invalid;
+  PasswordValidationError? validator(String value) {
+    if (value.isEmpty) return PasswordValidationError.empty;
+    if (value.length < 6) return PasswordValidationError.tooShort;
+
+    // More permissive regex - allows any printable characters
+    final passwordRegex = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$');
+    if (!passwordRegex.hasMatch(value)) return PasswordValidationError.invalid;
+
+    return null;
   }
 }

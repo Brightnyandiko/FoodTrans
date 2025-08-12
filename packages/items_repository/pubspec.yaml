@@ -1,0 +1,10 @@
+name: items_repository
+description: A repository to provide items data (in-memory for now).
+version: 0.1.0
+publish_to: "none"
+
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+
+dependencies:
+  equatable: ^2.0.5

@@ -1,36 +1,35 @@
-part of'item_filter_cubit.dart';
+import 'package:equatable/equatable.dart';
+import 'package:items_repository/items_repository.dart';
 
-// lib/cubit/filter_state.dart
-// import 'package:equatable/equatable.dart';
-// import '../models/item.dart';
-
-// lib/cubit/filter_state.dart
+enum ItemFilterStatus { initial, loading, success, failure }
 
 class ItemFilterState extends Equatable {
-  final List<Item>? allItems;
-  final List<Item>? filteredItems;
-  final String selectedCategory;
-
   const ItemFilterState({
-    required this.allItems,
-    required this.filteredItems,
-    required this.selectedCategory,
+    this.selectedCategory = 'All',
+    this.items = const [],
+    this.status = ItemFilterStatus.initial,
   });
 
+  final String selectedCategory;
+  final List<Item> items;
+  final ItemFilterStatus status;
+
   ItemFilterState copyWith({
-    List<Item>? allItems,
-    List<Item>? filteredItems,
     String? selectedCategory,
+    List<Item>? items,
+    ItemFilterStatus? status,
   }) {
     return ItemFilterState(
-      allItems: allItems ?? this.allItems,
-      filteredItems: filteredItems ?? this.filteredItems,
       selectedCategory: selectedCategory ?? this.selectedCategory,
+      items: items ?? this.items,
+      status: status ?? this.status,
     );
   }
 
   @override
-  List<Object?> get props => [allItems, filteredItems, selectedCategory];
+  List<Object?> get props => [selectedCategory, items, status];
 }
+
+
 
 

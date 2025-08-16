@@ -1,12 +1,5 @@
-// import 'package:cache/cache.dart';
-// import 'package:test/test.dart';
-
-// import 'package:flutter_test/flutter_test.dart';
-
-import 'package:test/expect.dart';
-import 'package:test/scaffolding.dart';
-
-import '../lib/cache.dart';
+import 'package:cache/cache.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('CacheClient', () {

@@ -1,8 +1,8 @@
 // widgets/category_section.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../models/food_category.dart';
-import '../cubit/home_cubit.dart';
+import '../../cubit/home_cubit.dart';
+import '../../models/food_category.dart';
 
 class CategorySection extends StatelessWidget {
   final List<FoodCategory> categories;
@@ -43,7 +43,7 @@ class CategorySection extends StatelessWidget {
               return Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    context.read<HomeCubit>().selectCategory(category.name);
+                    context.read<HomeCubit>().selectCategory(category.name.toString());
                   },
                   child: Container(
                     margin: const EdgeInsets.only(right: 12),

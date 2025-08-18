@@ -1,10 +1,11 @@
 // cubit/home_cubit.dart (Updated with network images)
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-// import 'package:geolocator/geolocator.dart';
 import '../models/food_item.dart';
 import '../models/food_category.dart';
-import 'home_state.dart';
+
+part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());

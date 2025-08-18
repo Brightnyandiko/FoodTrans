@@ -1,8 +1,11 @@
 // widgets/food_card.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../models/food_item.dart';
-import '../cubit/home_cubit.dart';
+
+import '../../cubit/home_cubit.dart';
+import '../../models/food_item.dart';
+// import '../models/food_item.dart';
+// import '../cubit/home_cubit.dart';
 
 // Alternative FoodCard with overflow protection
 class FoodCard extends StatelessWidget {

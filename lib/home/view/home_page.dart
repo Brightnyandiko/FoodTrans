@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_trans/home/view/widgets/bottom_navigation.dart';
+import 'package:food_trans/home/view/widgets/category_section.dart';
+import 'package:food_trans/home/view/widgets/food_grid.dart';
+import 'package:food_trans/home/view/widgets/header_section.dart';
 import '../cubit/home_cubit.dart';
-import '../cubit/home_state.dart';
-import '../widgets/header_section.dart';
-import '../widgets/category_section.dart';
-import '../widgets/food_grid.dart';
-import '../widgets/bottom_navigation.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

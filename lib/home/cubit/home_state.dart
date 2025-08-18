@@ -1,7 +1,5 @@
 // cubit/home_state.dart
-import 'package:equatable/equatable.dart';
-import '../models/food_item.dart';
-import '../models/food_category.dart';
+part of 'home_cubit.dart';
 
 abstract class HomeState extends Equatable {
   const HomeState();

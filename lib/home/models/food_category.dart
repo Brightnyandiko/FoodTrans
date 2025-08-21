@@ -24,6 +24,11 @@ class FoodCategory extends Equatable {
     );
   }
 
+  static const burger = FoodCategory(name: 'Burger', icon: '🍔');
+  static const taco = FoodCategory(name: 'Taco', icon: '🌮');
+  static const pizza = FoodCategory(name: 'Pizza', icon: '🍕');
+  static const drink = FoodCategory(name: 'Drink', icon: '🥤');
+
   @override
   List<Object?> get props => [name, icon, isSelected];
 }

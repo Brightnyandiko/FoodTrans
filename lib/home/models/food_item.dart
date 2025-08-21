@@ -1,15 +1,19 @@
 // models/food_item.dart
 import 'package:equatable/equatable.dart';
+import 'package:food_trans/home/models/food_category.dart';
 
 class FoodItem extends Equatable {
   final String id;
   final String name;
-  final String category;
+  final FoodCategory category;
   final double price;
   final double rating;
   final int distance;
   final String imageUrl;
   final bool isFavorite;
+  final String deliveryTime;
+  final String description;
+  final bool isFreeDelivery;
 
   const FoodItem({
     required this.id,
@@ -20,17 +24,24 @@ class FoodItem extends Equatable {
     required this.distance,
     required this.imageUrl,
     this.isFavorite = false,
+    required this.deliveryTime,
+    required this.description,
+    this.isFreeDelivery = true,
+
   });
 
   FoodItem copyWith({
     String? id,
     String? name,
-    String? category,
+    FoodCategory? category,
     double? price,
     double? rating,
     int? distance,
     String? imageUrl,
     bool? isFavorite,
+    String? deliveryTime,
+    String? description,
+    bool? isFreeDelivery,
   }) {
     return FoodItem(
       id: id ?? this.id,
@@ -41,6 +52,9 @@ class FoodItem extends Equatable {
       distance: distance ?? this.distance,
       imageUrl: imageUrl ?? this.imageUrl,
       isFavorite: isFavorite ?? this.isFavorite,
+      deliveryTime: deliveryTime ?? this.deliveryTime,
+      description: description ?? this.description,
+      isFreeDelivery: isFreeDelivery ?? this.isFreeDelivery
     );
   }
 
@@ -54,5 +68,8 @@ class FoodItem extends Equatable {
     distance,
     imageUrl,
     isFavorite,
+    deliveryTime,
+    description,
+    isFreeDelivery
   ];
 }

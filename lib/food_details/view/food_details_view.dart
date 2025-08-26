@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_trans/cart/view/cart_page.dart';
 // import 'package:food_repository/food_repository.dart';
 import '../../home/models/food_item.dart';
 import '../cubit/food_details_cubit.dart';
@@ -7,6 +8,8 @@ import '../cubit/food_details_cubit.dart';
 
 class FoodDetailsView extends StatelessWidget {
   const FoodDetailsView({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -113,6 +116,21 @@ class _HeroImageSection extends StatelessWidget {
             },
           ),
         ),
+        Container(
+            margin: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.3),
+              shape: BoxShape.circle
+            ),
+          child: IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => CartPage(),
+                  ), // Your route
+                );
+              }, icon: Icon(Icons.shopping_cart)
+          ),
+        )
       ],
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(

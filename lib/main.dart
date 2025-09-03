@@ -2,18 +2,32 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:food_trans/pages/login/login_page.dart';
+import 'package:food_trans/widgets/bottom_navigation.dart';
+// import 'package:items_repository/items_repository.dart';
+// import 'package:food_trans/pages/login/login_page.dart';
+// import 'cart/view/cart_page.dart';
+import 'firebase_options.dart';
 
 import 'app/view/app.dart';
+import 'home/view/home_page.dart';
+// import 'home/view/widgets/bottom_navigation.dart';
+import 'login/view/login_page.dart';
+import 'navigation/main_navigation_page.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
 
-  await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   final authenticationRepository = AuthenticationRepository();
   await authenticationRepository.user.first;
+
+  // final itemsRepository = ItemsRepository();
+  // itemsRepository.getItemsByCategory(category)
 
   runApp(App(authenticationRepository: authenticationRepository));
 }
@@ -58,7 +72,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: const MainNavigationPage(),
       theme: ThemeData(
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(foregroundColor: Colors.deepOrangeAccent),

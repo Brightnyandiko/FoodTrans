@@ -1,12 +1,17 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_trans/pages/sign_up/sign_up_form.dart';
+import 'package:food_trans/sign_up/view/sign_up_form.dart';
+// import 'package:food_trans/pages/sign_up/sign_up_form.dart';
 
 import '../../sign_up/cubit/sign_up_cubit.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
+
+  static Route<void> route() {
+    return MaterialPageRoute<void>(builder: (_) => const SignUpPage());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +25,10 @@ class SignUpPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Login to your\naccount",
+                "Create your new\naccount",
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30, color: Colors.black),
               ),
-              const SizedBox(height: 10,),
+              // const SizedBox(height: 10,),
 
               Text("Please Sign in to your account"),
 

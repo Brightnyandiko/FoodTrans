@@ -6,6 +6,10 @@ import 'package:food_trans/app/view/app.dart';
 // import 'package:food_trans/pages/login/login_page.dart';
 // import 'package:food_trans/theme.dart';
 
+import '../../cart/cubit/cart_cubit.dart';
+import '../../cart/repository/cart_repository.dart';
+import '../../food_details/cubit/food_details_cubit.dart';
+import '../../food_details/repository/food_details_repository.dart';
 import '../../splash/view/splash_page.dart';
 import '../bloc/app_bloc.dart';
 import '../routes/routes.dart';
@@ -18,17 +22,44 @@ class App extends StatelessWidget {
 
   final AuthenticationRepository _authenticationRepository;
 
+//   @override
+//   Widget build(BuildContext context) {
+//     return RepositoryProvider.value(
+//       value: _authenticationRepository,
+//       child: BlocProvider(
+//         lazy: false,
+//         create: (_) => AppBloc(
+//           authenticationRepository: _authenticationRepository,
+//         )..add(const AppUserSubscriptionRequested()),
+//         child: const AppView(),
+//       ),
+//     );
+//   }
+// }
+
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: _authenticationRepository,
-      child: BlocProvider(
-        lazy: false,
-        create: (_) => AppBloc(
-          authenticationRepository: _authenticationRepository,
-        )..add(const AppUserSubscriptionRequested()),
-        child: const AppView(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        RepositoryProvider.value(
+          value: _authenticationRepository,
+        ), // ✅ No child parameter
+        BlocProvider(
+          lazy: false,
+          create: (_) => AppBloc(
+            authenticationRepository: _authenticationRepository,
+          )..add(const AppUserSubscriptionRequested()),
+        ),
+        BlocProvider(
+          create: (_) => CartCubit(cartRepository: CartRepository()),
+        ),
+        BlocProvider(
+          create: (_) => FoodDetailsCubit(
+            foodDetailsRepository: FoodDetailsRepository(),
+          ),
+        ),
+      ],
+      child: const AppView(),
     );
   }
 }

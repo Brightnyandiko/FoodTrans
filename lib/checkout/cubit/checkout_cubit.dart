@@ -2,9 +2,9 @@ import 'package:bloc/bloc.dart';
 // import 'package:equatable/equatable';
 import 'package:equatable/equatable.dart';
 
-import '../models/cart_item.dart';
+import '../models/checkout_item.dart';
 import '../models/delivery_address.dart';
-// import 'package:payment_summary_app/cart/models/cart_item.dart';
+// import 'package:payment_summary_app/cart/models/checkout_item.dart';
 // import 'package:payment_summary_app/cart/models/delivery_address.dart';
 
 part 'checkout_state.dart';
@@ -18,7 +18,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       // Simulate fetching data
       await Future.delayed(const Duration(seconds: 1));
       final cartItems = [
-        const CartItem(name: 'Burger With Meat', price: 12230.0, quantity: 14),
+        const CheckoutItem(name: 'Burger With Meat', price: 12230.0, quantity: 14),
       ];
       const deliveryFee = 50.000;
       const taxRate = 0.10;

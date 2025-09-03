@@ -31,7 +31,7 @@ class BottomNavigation extends StatelessWidget {
             children: [
               _buildNavItem(Icons.home, 0, 'Home'),
               _buildNavItem(Icons.shopping_bag_outlined, 1, 'Cart'),
-              _buildNavItem(Icons.chat_bubble_outline, 2, 'Chat List'),
+              _buildNavItem(Icons.chat_rounded, 2, 'Chat'),
               _buildNavItem(Icons.person_outline, 3, 'Profile'),
             ],
           ),

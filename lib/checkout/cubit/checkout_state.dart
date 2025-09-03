@@ -5,7 +5,7 @@ enum CheckoutStatus { initial, loading, success, failure }
 class CheckoutState extends Equatable {
   const CheckoutState({
     this.status = CheckoutStatus.initial,
-    this.cartItems = const <CartItem>[],
+    this.cartItems = const <CheckoutItem>[],
     this.deliveryFee = 0.0,
     this.taxRate = 0.0,
     this.totalPrice = 0.0,
@@ -13,7 +13,7 @@ class CheckoutState extends Equatable {
   });
 
   final CheckoutStatus status;
-  final List<CartItem> cartItems;
+  final List<CheckoutItem> cartItems;
   final double deliveryFee;
   final double taxRate;
   final double totalPrice;
@@ -21,7 +21,7 @@ class CheckoutState extends Equatable {
 
   CheckoutState copyWith({
     CheckoutStatus? status,
-    List<CartItem>? cartItems,
+    List<CheckoutItem>? cartItems,
     double? deliveryFee,
     double? taxRate,
     double? totalPrice,

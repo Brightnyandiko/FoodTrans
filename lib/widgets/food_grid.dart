@@ -1,7 +1,8 @@
 // widgets/food_grid.dart
 import 'package:flutter/material.dart';
 // import '../models/food_item.dart';
-import '../../models/food_item.dart';
+// import '../../models/food_item.dart';
+import '../home/models/food_item.dart';
 import 'food_card.dart';
 
 class FoodGrid extends StatelessWidget {

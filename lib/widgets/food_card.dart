@@ -5,7 +5,8 @@ import 'package:food_trans/home/models/food_category.dart';
 import 'package:food_trans/home/models/food_item.dart';
 
 import '../../../food_details/view/food_details_page.dart';
-import '../../cubit/home_cubit.dart';
+import '../home/cubit/home_cubit.dart';
+// import '../../cubit/home_cubit.dart';
 // import '../../models/food_item.dart';
 // import '../models/food_item.dart';
 // import '../cubit/home_cubit.dart';

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_trans/home/view/widgets/bottom_navigation.dart';
-import 'package:food_trans/home/view/widgets/category_section.dart';
-import 'package:food_trans/home/view/widgets/food_grid.dart';
-import 'package:food_trans/home/view/widgets/header_section.dart';
+// import 'package:food_trans/home/view/widgets/bottom_navigation.dart';
+// import 'package:food_trans/home/view/widgets/category_section.dart';
+// import 'package:food_trans/home/view/widgets/food_grid.dart';
+// import 'package:food_trans/home/view/widgets/header_section.dart';
+import '../../navigation/main_navigation_page.dart';
+import '../../navigation/navigation_wrapper.dart';
+import '../../widgets/category_section.dart';
+import '../../widgets/food_grid.dart';
+import '../../widgets/header_section.dart';
 import '../cubit/home_cubit.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePageView extends StatelessWidget {
+  const HomePageView({super.key});
 
   static Page<void> page() => MaterialPage<void>(
-    child: BlocProvider(
-      create: (context) => HomeCubit()..loadData(), // Initialize and load data
-      child: const HomePage(),
-    ),
+    child: const MainNavigationPage()
   );
 
   @override
@@ -81,7 +83,24 @@ class HomePage extends StatelessWidget {
           return const SizedBox();
         },
       ),
-      bottomNavigationBar: const BottomNavigation(),
+      // bottomNavigationBar: BottomNavigation(selectedIndex: 0, onItemTapped: (int ) { 0; },),
     );
+  }
+}
+
+// Keep this for backward compatibility if needed elsewhere
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  static Page<void> page() => MaterialPage<void>(
+    child: BlocProvider(
+      create: (context) => HomeCubit()..loadData(),
+      child: const AppNavigationWrapper(), // Use the wrapper instead
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return const HomePageView();
   }
 }

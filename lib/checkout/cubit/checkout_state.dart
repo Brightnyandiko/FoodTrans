@@ -1,10 +1,10 @@
-part of 'cart_cubit.dart';
+part of 'checkout_cubit.dart';
 
-enum CartStatus { initial, loading, success, failure }
+enum CheckoutStatus { initial, loading, success, failure }
 
-class CartState extends Equatable {
-  const CartState({
-    this.status = CartStatus.initial,
+class CheckoutState extends Equatable {
+  const CheckoutState({
+    this.status = CheckoutStatus.initial,
     this.cartItems = const <CartItem>[],
     this.deliveryFee = 0.0,
     this.taxRate = 0.0,
@@ -12,22 +12,22 @@ class CartState extends Equatable {
     this.deliveryAddress = const DeliveryAddress(),
   });
 
-  final CartStatus status;
+  final CheckoutStatus status;
   final List<CartItem> cartItems;
   final double deliveryFee;
   final double taxRate;
   final double totalPrice;
   final DeliveryAddress deliveryAddress;
 
-  CartState copyWith({
-    CartStatus? status,
+  CheckoutState copyWith({
+    CheckoutStatus? status,
     List<CartItem>? cartItems,
     double? deliveryFee,
     double? taxRate,
     double? totalPrice,
     DeliveryAddress? deliveryAddress,
   }) {
-    return CartState(
+    return CheckoutState(
       status: status ?? this.status,
       cartItems: cartItems ?? this.cartItems,
       deliveryFee: deliveryFee ?? this.deliveryFee,

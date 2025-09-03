@@ -7,13 +7,13 @@ import '../models/delivery_address.dart';
 // import 'package:payment_summary_app/cart/models/cart_item.dart';
 // import 'package:payment_summary_app/cart/models/delivery_address.dart';
 
-part 'cart_state.dart';
+part 'checkout_state.dart';
 
-class CartCubit extends Cubit<CartState> {
-  CartCubit() : super(const CartState());
+class CheckoutCubit extends Cubit<CheckoutState> {
+  CheckoutCubit() : super(const CheckoutState());
 
   void loadCart() async {
-    emit(state.copyWith(status: CartStatus.loading));
+    emit(state.copyWith(status: CheckoutStatus.loading));
     try {
       // Simulate fetching data
       await Future.delayed(const Duration(seconds: 1));
@@ -35,7 +35,7 @@ class CartCubit extends Cubit<CartState> {
       );
 
       emit(state.copyWith(
-        status: CartStatus.success,
+        status: CheckoutStatus.success,
         cartItems: cartItems,
         deliveryFee: deliveryFee,
         taxRate: taxRate,
@@ -43,7 +43,7 @@ class CartCubit extends Cubit<CartState> {
         deliveryAddress: deliveryAddress,
       ));
     } catch (_) {
-      emit(state.copyWith(status: CartStatus.failure));
+      emit(state.copyWith(status: CheckoutStatus.failure));
     }
   }
 }

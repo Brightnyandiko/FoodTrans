@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/cart_cubit.dart';
-// import 'package:payment_summary_app/cart/cubit/cart_cubit.dart';
+import '../cubit/checkout_cubit.dart';
+// import 'package:payment_summary_app/cart/cubit/checkout_cubit.dart';
 
-class CartView extends StatelessWidget {
-  const CartView({Key? key}) : super(key: key);
+class CheckoutView extends StatelessWidget {
+  const CheckoutView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +13,16 @@ class CartView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {},
+          onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text('Payment'),
         centerTitle: true,
       ),
-      body: BlocBuilder<CartCubit, CartState>(
+      body: BlocBuilder<CheckoutCubit, CheckoutState>(
         builder: (context, state) {
-          if (state.status == CartStatus.loading) {
+          if (state.status == CheckoutStatus.loading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state.status == CartStatus.success) {
+          } else if (state.status == CheckoutStatus.success) {
             return Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -127,7 +127,14 @@ class CartView extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('The your product has been dispatched!'),
+                              duration: Duration(seconds: 2),
+                            ),
+                            );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
                         padding: const EdgeInsets.symmetric(vertical: 16),
@@ -144,7 +151,7 @@ class CartView extends StatelessWidget {
                 ],
               ),
             );
-          } else if (state.status == CartStatus.failure) {
+          } else if (state.status == CheckoutStatus.failure) {
             return const Center(child: Text('Failed to load cart.'));
           }
           return const SizedBox.shrink();

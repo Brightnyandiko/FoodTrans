@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_trans/cart/view/cart_page.dart';
+// import 'package:food_trans/cart/view/cart_page.dart';
 // import 'package:food_repository/food_repository.dart';
+import '../../checkout/view/cart_page.dart';
 import '../../home/models/food_item.dart';
 import '../cubit/food_details_cubit.dart';
 // import '../models/food.dart';
@@ -125,10 +126,10 @@ class _HeroImageSection extends StatelessWidget {
           child: IconButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => CartPage(),
+                    builder: (context) => CheckoutPage(),
                   ), // Your route
                 );
-              }, icon: Icon(Icons.shopping_cart)
+              }, icon: Icon(Icons.shopping_cart, color: Colors.white,)
           ),
         )
       ],

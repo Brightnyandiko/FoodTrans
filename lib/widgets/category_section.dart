@@ -1,8 +1,10 @@
 // widgets/category_section.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../cubit/home_cubit.dart';
-import '../../models/food_category.dart';
+// import '../../cubit/home_cubit.dart';
+// import '../../models/food_category.dart';
+import '../home/cubit/home_cubit.dart';
+import '../home/models/food_category.dart';
 
 class CategorySection extends StatelessWidget {
   final List<FoodCategory> categories;

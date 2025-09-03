@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 
-class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        title: const Text('Profile'),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
       ),
       body: const Center(
         child: Text(
-          'Cart Page',
+          'Profile Page',
           style: TextStyle(fontSize: 24),
         ),
       ),
-      // ✅ NO bottomNavigationBar here!
     );
   }
 }

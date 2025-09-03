@@ -228,6 +228,8 @@ class FoodDetailsCubit extends Cubit<FoodDetailsState> {
   }
 
   void addToCartCompleted() {
-    emit(const FoodDetailsAddedToCart());
+    if (state is FoodDetailsLoaded) {
+      emit(state); // Re-emit the same state to trigger listener
+    }
   }
 }

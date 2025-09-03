@@ -997,6 +997,11 @@ class FoodDetailsView extends StatelessWidget {
     context.read<CartCubit>().addToCart(state.foodItem, state.quantity);
 
     // Notify the FoodDetailsCubit that item was added
-    context.read<FoodDetailsCubit>().addToCartCompleted();
+    // context.read<FoodDetailsCubit>().addToCartCompleted();
+
+    // Show snackbar directly instead of emitting state
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Added to cart successfully')),
+    );
   }
 }

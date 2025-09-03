@@ -28,13 +28,13 @@ class FoodCard extends StatelessWidget {
           price: 12230,
           imageUrl: 'assets/images/burger_meat.jpg',
           rating: 4.5,
-          distance: 190,
+          distance: '190m',
           deliveryTime: '20-30',
           description: 'Burger With Meat is a typical food from our restaurant that is much in demand by many people, this is very recommended for you.',
           category: FoodCategory.burger,
         );
 
-        Navigator.of(context).push(FoodDetailsPage.route(selectedFood));
+        Navigator.of(context).push(FoodDetailsPage.route(selectedFood.id));
       },
       child: Container(
         decoration: BoxDecoration(

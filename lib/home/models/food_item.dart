@@ -8,7 +8,7 @@ class FoodItem extends Equatable {
   final FoodCategory category;
   final double price;
   final double rating;
-  final int distance;
+  final String distance;
   final String imageUrl;
   final bool isFavorite;
   final String deliveryTime;
@@ -36,7 +36,7 @@ class FoodItem extends Equatable {
     FoodCategory? category,
     double? price,
     double? rating,
-    int? distance,
+    String? distance,
     String? imageUrl,
     bool? isFavorite,
     String? deliveryTime,

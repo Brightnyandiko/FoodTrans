@@ -1,3 +1,4 @@
+// lib/cart/cubit/cart_state.dart
 part of 'cart_cubit.dart';
 
 abstract class CartState extends Equatable {
@@ -7,45 +8,43 @@ abstract class CartState extends Equatable {
   List<Object> get props => [];
 }
 
-class CartInitial extends CartState {}
-
-class CartLoading extends CartState {}
-
 class CartEmpty extends CartState {
   const CartEmpty();
 }
 
+class CartLoading extends CartState {
+  const CartLoading();
+}
+
 class CartLoaded extends CartState {
-  const CartLoaded({
-    required this.items,
-    required this.recommendedItems,
-  });
+  final Map<String, CartItem> items;
 
-  final List<CartItem> items;
-  final List<FoodItem> recommendedItems;
+  const CartLoaded({required this.items});
 
-  double get subtotal => items
-      .where((item) => item.isSelected)
-      .fold(0, (sum, item) => sum + item.totalPrice);
+  int get itemCount => items.length;
 
-  double get deliveryFee => 0.0; // Free delivery
+  int get totalQuantity => items.values.fold(0, (sum, item) => sum + item.quantity);
 
-  double get discount => subtotal * 0.225; // 22.5% discount
+  double get totalAmount => items.values.fold(0.0, (sum, item) => sum + item.totalPrice);
 
-  double get total => subtotal - discount + deliveryFee;
+  double get subtotal => totalAmount;
 
-  int get totalItemCount => items
-      .where((item) => item.isSelected)
-      .fold(0, (sum, item) => sum + item.quantity);
+  double get deliveryFee => items.isEmpty ? 0.0 : 0.0;
+
+  double get discount => totalAmount * 0.22;
+
+  double get finalTotal => subtotal + deliveryFee - discount;
+
+  bool get isEmpty => items.isEmpty;
 
   @override
-  List<Object> get props => [items, recommendedItems];
+  List<Object> get props => [items];
 }
 
 class CartError extends CartState {
-  const CartError(this.message);
-
   final String message;
+
+  const CartError({required this.message});
 
   @override
   List<Object> get props => [message];

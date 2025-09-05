@@ -13,30 +13,30 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeLoaded extends HomeState {
-  final List<FoodItem> foodItems;
+  final List<Product> product;
   final List<FoodCategory> categories;
   final String location;
 
   const HomeLoaded({
-    required this.foodItems,
+    required this.product,
     required this.categories,
     required this.location,
   });
 
   HomeLoaded copyWith({
-    List<FoodItem>? foodItems,
+    List<Product>? product,
     List<FoodCategory>? categories,
     String? location,
   }) {
     return HomeLoaded(
-      foodItems: foodItems ?? this.foodItems,
+      product: product ?? this.product,
       categories: categories ?? this.categories,
       location: location ?? this.location,
     );
   }
 
   @override
-  List<Object> get props => [foodItems, categories, location];
+  List<Object> get props => [product, categories, location];
 }
 
 class HomeError extends HomeState {

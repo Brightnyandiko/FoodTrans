@@ -68,7 +68,7 @@ class HomePageView extends StatelessWidget {
                           children: [
                             CategorySection(categories: state.categories),
                             Expanded(
-                              child: FoodGrid(foodItems: state.foodItems),
+                              child: FoodGrid(product: state.product),
                             ),
                           ],
                         ),

@@ -6,6 +6,8 @@ import 'package:food_trans/home/models/food_item.dart';
 
 import '../../../food_details/view/food_details_page.dart';
 import '../home/cubit/home_cubit.dart';
+import '../product/models/product.dart';
+import '../product/view/product_detail_page.dart';
 // import '../../cubit/home_cubit.dart';
 // import '../../models/food_item.dart';
 // import '../models/food_item.dart';
@@ -13,28 +15,28 @@ import '../home/cubit/home_cubit.dart';
 
 // Alternative FoodCard with overflow protection
 class FoodCard extends StatelessWidget {
-  final FoodItem foodItem;
+  final Product product;
 
-  const FoodCard({super.key, required this.foodItem});
+  const FoodCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       // In your homepage grid item onTap
       onTap: () {
-        final selectedFood = FoodItem(
+        final selectedFood = Product(
           id: '1',
           name: 'Burger With Meat',
           price: 12230,
           imageUrl: 'assets/images/burger_meat.jpg',
           rating: 4.5,
           distance: '190m',
-          deliveryTime: '20-30',
+          deliveryTime: 20-30,
           description: 'Burger With Meat is a typical food from our restaurant that is much in demand by many people, this is very recommended for you.',
-          category: FoodCategory.burger,
+          foodCategory: FoodCategory.burger
         );
 
-        Navigator.of(context).push(FoodDetailsPage.route(selectedFood.id));
+        Navigator.of(context).push(ProductDetailPage.route(product));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -73,7 +75,7 @@ class FoodCard extends StatelessWidget {
                             topRight: Radius.circular(16),
                           ),
                           child: Image.network(
-                            foodItem.imageUrl,
+                            product.imageUrl,
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
                               return Container(
@@ -93,7 +95,7 @@ class FoodCard extends StatelessWidget {
                         right: 8,
                         child: GestureDetector(
                           onTap: () {
-                            context.read<HomeCubit>().toggleFavorite(foodItem.id);
+                            context.read<HomeCubit>().toggleFavorite(product.id);
                           },
                           child: Container(
                             padding: const EdgeInsets.all(4),
@@ -108,10 +110,10 @@ class FoodCard extends StatelessWidget {
                               ],
                             ),
                             child: Icon(
-                              foodItem.isFavorite
+                              product.isFavorite
                                   ? Icons.favorite
                                   : Icons.favorite_border,
-                              color: foodItem.isFavorite
+                              color: product.isFavorite
                                   ? Colors.red
                                   : Colors.grey.shade600,
                               size: 14,
@@ -131,7 +133,7 @@ class FoodCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          foodItem.name,
+                          product.name,
                           style: const TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
@@ -150,7 +152,7 @@ class FoodCard extends StatelessWidget {
                             ),
                             const SizedBox(width: 2),
                             Text(
-                              foodItem.rating.toString(),
+                              product.rating.toString(),
                               style: const TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w500,
@@ -165,7 +167,7 @@ class FoodCard extends StatelessWidget {
                             ),
                             const SizedBox(width: 2),
                             Text(
-                              '${foodItem.distance}m',
+                              '${product.distance}m',
                               style: const TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w500,
@@ -176,7 +178,7 @@ class FoodCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          '\$ ${foodItem.price.toStringAsFixed(0)}',
+                          '\$ ${product.price.toStringAsFixed(0)}',
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.bold,

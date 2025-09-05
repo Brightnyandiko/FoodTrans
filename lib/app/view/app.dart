@@ -10,8 +10,10 @@ import '../../cart/cubit/cart_cubit.dart';
 import '../../cart/repository/cart_repository.dart';
 import '../../food_details/cubit/food_details_cubit.dart';
 import '../../food_details/repository/food_details_repository.dart';
+import '../../product/cubit/product_cubit.dart';
 import '../../splash/view/splash_page.dart';
 import '../bloc/app_bloc.dart';
+import '../routes/app_routes.dart';
 import '../routes/routes.dart';
 
 class App extends StatelessWidget {
@@ -50,14 +52,8 @@ class App extends StatelessWidget {
             authenticationRepository: _authenticationRepository,
           )..add(const AppUserSubscriptionRequested()),
         ),
-        BlocProvider(
-          create: (_) => CartCubit(cartRepository: CartRepository()),
-        ),
-        BlocProvider(
-          create: (_) => FoodDetailsCubit(
-            foodDetailsRepository: FoodDetailsRepository(),
-          ),
-        ),
+        BlocProvider(create: (_) => CartCubit()),
+        BlocProvider(create: (_) => ProductCubit()),
       ],
       child: const AppView(),
     );
@@ -95,8 +91,11 @@ class AppView extends StatelessWidget {
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(foregroundColor: Colors.deepOrangeAccent),
         ),
+        primarySwatch: Colors.orange,
+        fontFamily: 'Inter',
       ),
-      onGenerateRoute: (_) => SplashPage.route(),
+      onGenerateRoute: AppRoutes.generateRoute,
+      // initialRoute: AppRoutes.cart,
     );
   }
 }

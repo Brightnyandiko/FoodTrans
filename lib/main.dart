@@ -72,6 +72,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Food Delivery App',
       home: const MainNavigationPage(),
       theme: ThemeData(
         textButtonTheme: TextButtonThemeData(

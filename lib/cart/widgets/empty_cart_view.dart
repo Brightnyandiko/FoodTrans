@@ -48,7 +48,7 @@ class EmptyCartView extends StatelessWidget {
               height: 56,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/products');
+                  Navigator.pushNamed(context, '/product-details');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,

@@ -14,12 +14,6 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => CartCubit()),
-        BlocProvider(create: (_) => ProductCubit()),
-      ],
-      child: const CartView(),
-    );
+    return const CartView();
   }
 }

@@ -4,7 +4,7 @@ import '../../cart/view/cart_page.dart';
 import '../../product/models/models.dart';
 import '../../product/view/product_detail_page.dart';
 
-class AppRoutes extends Route {
+class AppRoutes {
   static const String cart = '/cart';
   static const String productDetail = '/product-detail';
 

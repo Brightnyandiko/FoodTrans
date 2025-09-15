@@ -13,6 +13,7 @@ class CartCubit extends Cubit<CartState> {
 
   void addItem(Product product, {int quantity = 1}) {
     try {
+      // print('Adding product: ${product.id} - ${product.name}');
       emit(const CartLoading());
 
       if (_items.containsKey(product.id)) {
@@ -30,8 +31,12 @@ class CartCubit extends Cubit<CartState> {
         );
       }
 
+      // print('Cart now has ${_items.length} items'); // Debug
+      // print('Items: ${_items.keys}');
+
       _emitCartState();
     } catch (e) {
+      // print('Error adding item: $e');
       emit(CartError(message: 'Failed to add item to cart'));
     }
   }
@@ -51,7 +56,8 @@ class CartCubit extends Cubit<CartState> {
       emit(const CartLoading());
 
       if (quantity <= 0) {
-        removeItem(productId);
+        // removeItem(productId);
+        _items.remove(productId);
         return;
       }
 
@@ -76,9 +82,13 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void _emitCartState() {
+    print('CartCubit: Emitting state with ${_items.length} items');
+    print('CartCubit: Items keys: ${_items.keys}');
     if (_items.isEmpty) {
+      print('CartCubit: Emitting CartEmpty');
       emit(const CartEmpty());
     } else {
+      print('CartCubit: Emitting CartLoaded with ${_items.length} items');
       emit(CartLoaded(items: Map.from(_items)));
     }
   }

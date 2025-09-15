@@ -1,6 +1,7 @@
 // cubit/home_cubit.dart (Updated with network images)
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_trans/product/models/models.dart';
 import 'package:geolocator/geolocator.dart';
 import '../models/food_item.dart';
 import '../models/food_category.dart';
@@ -18,10 +19,10 @@ class HomeCubit extends Cubit<HomeState> {
 
       final location = await _getCurrentLocation();
       final categories = _getCategories();
-      final foodItems = _getFoodItems();
+      final product = _getProduct();
 
       emit(HomeLoaded(
-        foodItems: foodItems,
+        product: product,
         categories: categories,
         location: location,
       ));
@@ -33,14 +34,14 @@ class HomeCubit extends Cubit<HomeState> {
   void toggleFavorite(String itemId) {
     if (state is HomeLoaded) {
       final currentState = state as HomeLoaded;
-      final updatedItems = currentState.foodItems.map((item) {
+      final updatedItems = currentState.product.map((item) {
         if (item.id == itemId) {
           return item.copyWith(isFavorite: !item.isFavorite);
         }
         return item;
       }).toList();
 
-      emit(currentState.copyWith(foodItems: updatedItems));
+      emit(currentState.copyWith(product: updatedItems));
     }
   }
 
@@ -91,48 +92,50 @@ class HomeCubit extends Cubit<HomeState> {
     ];
   }
 
-  List<FoodItem> _getFoodItems() {
+  List<Product> _getProduct() {
     return [
-      const FoodItem(
+      const Product(
         id: '1',
         name: 'Ordinary Burgers',
-        category: FoodCategory.burger,
+        foodCategory: FoodCategory.burger,
         price: 17230,
         rating: 4.9,
         distance: '190',
         imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=fill',
-        deliveryTime: '',
+        deliveryTime: 20-30,
         description: '',
       ),
-      const FoodItem(
+      const Product(
         id: '2',
         name: 'Burger With Meat',
-        category: FoodCategory.burger,
+        foodCategory: FoodCategory.burger,
         price: 17230,
         rating: 4.9,
         distance: '190m',
-        imageUrl: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop', deliveryTime: '', description: '',
+        imageUrl: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop',
+        deliveryTime: 20-30,
+        description: '',
       ),
-      const FoodItem(
+      const Product(
         id: '3',
         name: 'Veggie Burger',
-        category: FoodCategory.burger,
+        foodCategory: FoodCategory.burger,
         price: 15500,
         rating: 4.7,
         distance: '250m',
         imageUrl: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=400&h=300&fit=crop',
-        deliveryTime: '',
+        deliveryTime: 20-30,
         description: '',
       ),
-      const FoodItem(
+      const Product(
         id: '4',
         name: 'Double Cheese Burger',
-        category: FoodCategory.burger,
+        foodCategory: FoodCategory.burger,
         price: 19800,
         rating: 4.8,
         distance: '180m',
         imageUrl: 'https://unsplash.com/photos/burger-with-lettuce-and-cheese-73_obA0IB_0?w=400&h=300&fit=crop',
-        deliveryTime: '',
+        deliveryTime: 20-30,
         description: '',
       ),
     ];

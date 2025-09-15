@@ -1,82 +1,95 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+// lib/cart/cubit/cart_cubit.dart
+import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-
-import '../../home/models/food_item.dart';
-import '../models/cart_item.dart';
-// import '../models/food_item.dart';
-import '../repository/cart_repository.dart';
+import '../models/models.dart';
+import '../../product/models/models.dart';
 
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
-  CartCubit({required CartRepository cartRepository})
-      : _cartRepository = cartRepository,
-        super(CartInitial());
+  CartCubit() : super(const CartEmpty());
 
-  final CartRepository _cartRepository;
+  final Map<String, CartItem> _items = {};
 
-  Future<void> loadCart() async {
+  void addItem(Product product, {int quantity = 1}) {
     try {
-      emit(CartLoading());
-      final items = await _cartRepository.getCartItems();
-      final recommendedItems = await _cartRepository.getRecommendedItems();
+      // print('Adding product: ${product.id} - ${product.name}');
+      emit(const CartLoading());
 
-      if (items.isEmpty) {
-        emit(const CartEmpty());
+      if (_items.containsKey(product.id)) {
+        // Update existing item
+        final existingItem = _items[product.id]!;
+        _items[product.id] = existingItem.copyWith(
+          quantity: existingItem.quantity + quantity,
+        );
       } else {
-        emit(CartLoaded(items: items, recommendedItems: recommendedItems));
+        // Add new item
+        _items[product.id] = CartItem(
+          id: DateTime.now().toString(),
+          product: product,
+          quantity: quantity,
+        );
       }
-    } catch (error) {
-      emit(CartError(error.toString()));
+
+      // print('Cart now has ${_items.length} items'); // Debug
+      // print('Items: ${_items.keys}');
+
+      _emitCartState();
+    } catch (e) {
+      // print('Error adding item: $e');
+      emit(CartError(message: 'Failed to add item to cart'));
     }
   }
 
-  Future<void> addToCart(FoodItem foodItem, int quantity) async {
+  void removeItem(String productId) {
     try {
-      await _cartRepository.addToCart(foodItem, quantity);
-      await loadCart();
-    } catch (error) {
-      emit(CartError(error.toString()));
+      emit(const CartLoading());
+      _items.remove(productId);
+      _emitCartState();
+    } catch (e) {
+      emit(CartError(message: 'Failed to remove item from cart'));
     }
   }
 
-  Future<void> updateQuantity(String foodItemId, int quantity) async {
+  void updateQuantity(String productId, int quantity) {
     try {
+      emit(const CartLoading());
+
       if (quantity <= 0) {
-        await _cartRepository.removeFromCart(foodItemId);
-      } else {
-        await _cartRepository.updateQuantity(foodItemId, quantity);
+        // removeItem(productId);
+        _items.remove(productId);
+        return;
       }
-      await loadCart();
-    } catch (error) {
-      emit(CartError(error.toString()));
+
+      if (_items.containsKey(productId)) {
+        final existingItem = _items[productId]!;
+        _items[productId] = existingItem.copyWith(quantity: quantity);
+        _emitCartState();
+      }
+    } catch (e) {
+      emit(CartError(message: 'Failed to update quantity'));
     }
   }
 
-  Future<void> toggleItemSelection(String foodItemId) async {
+  void clearCart() {
     try {
-      await _cartRepository.toggleItemSelection(foodItemId);
-      await loadCart();
-    } catch (error) {
-      emit(CartError(error.toString()));
+      emit(const CartLoading());
+      _items.clear();
+      _emitCartState();
+    } catch (e) {
+      emit(CartError(message: 'Failed to clear cart'));
     }
   }
 
-  Future<void> removeFromCart(String foodItemId) async {
-    try {
-      await _cartRepository.removeFromCart(foodItemId);
-      await loadCart();
-    } catch (error) {
-      emit(CartError(error.toString()));
-    }
-  }
-
-  Future<void> clearCart() async {
-    try {
-      await _cartRepository.clearCart();
+  void _emitCartState() {
+    print('CartCubit: Emitting state with ${_items.length} items');
+    print('CartCubit: Items keys: ${_items.keys}');
+    if (_items.isEmpty) {
+      print('CartCubit: Emitting CartEmpty');
       emit(const CartEmpty());
-    } catch (error) {
-      emit(CartError(error.toString()));
+    } else {
+      print('CartCubit: Emitting CartLoaded with ${_items.length} items');
+      emit(CartLoaded(items: Map.from(_items)));
     }
   }
 }

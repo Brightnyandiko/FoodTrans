@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 // import '../models/food_item.dart';
 // import '../../models/food_item.dart';
 import '../home/models/food_item.dart';
+import '../product/models/product.dart';
 import 'food_card.dart';
 
 class FoodGrid extends StatelessWidget {
-  final List<FoodItem> foodItems;
+  final List<Product> product;
 
-  const FoodGrid({super.key, required this.foodItems});
+  const FoodGrid({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,9 @@ class FoodGrid extends StatelessWidget {
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
         ),
-        itemCount: foodItems.length,
+        itemCount: product.length,
         itemBuilder: (context, index) {
-          return FoodCard(foodItem: foodItems[index]);
+          return FoodCard(product: product[index]);
         },
       ),
     );

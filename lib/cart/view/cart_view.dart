@@ -9,16 +9,8 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return BlocBuilder<CartCubit, CartState>(
-    return BlocConsumer<CartCubit, CartState>(
-      listener: (context, state) {
-        print('CartView: State changed to: ${state.runtimeType}');
-        if (state is CartLoaded) {
-          print('CartView: Received CartLoaded with ${state.items.length} items');
-        }
-      },
+    return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
-        print('CartView: Building with state: ${state.runtimeType}');
         if (state is CartLoading) {
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
@@ -26,7 +18,6 @@ class CartView extends StatelessWidget {
         }
 
         if (state is CartError) {
-          print('CartView: Showing error: ${state.message}');
           return Scaffold(
             body: Center(
               child: Column(
@@ -47,7 +38,6 @@ class CartView extends StatelessWidget {
           print('CartView: CartLoaded with ${state.items.length} items');
           return ActiveCartView(cartState: state);
         }
-        print('CartView: Showing empty cart');
 
         return const EmptyCartView();
       },

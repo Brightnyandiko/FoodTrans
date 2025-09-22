@@ -1,4 +1,5 @@
 // lib/profile/view/profile_view.dart
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -6,6 +7,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../cubit/profile_cubit.dart';
 import '../models/user_profile.dart';
 import '../models/order.dart';
+import '../personal_data/view/personal_data_page.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -508,8 +510,20 @@ class ProfileView extends StatelessWidget {
     Navigator.pushNamed(context, '/all-orders');
   }
 
-  void _navigateToPersonalData(BuildContext context) {
-    Navigator.pushNamed(context, '/personal-data');
+  // Update the _navigateToPersonalData method:
+  void _navigateToPersonalData(BuildContext context) async {
+    final currentState = context.read<ProfileCubit>().state;
+    if (currentState is ProfileLoaded) {
+      final updatedUser = await Navigator.push<UserProfile?>(
+        context,
+        PersonalDataPage.route(currentState.user),
+      );
+
+      // If user data was updated, refresh the profile
+      if (updatedUser != null) {
+        context.read<ProfileCubit>().updateUserProfile(updatedUser);
+      }
+    }
   }
 
   void _navigateToSettings(BuildContext context) {
@@ -663,13 +677,15 @@ class ProfileView extends StatelessWidget {
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {
+                              // Navigator.of(context).pop();
+                              // // Handle sign out logic
+                              // Navigator.pushNamedAndRemoveUntil(
+                              //   context,
+                              //   '/login',
+                              //       (route) => false,
+                              // );
                               Navigator.of(context).pop();
-                              // Handle sign out logic
-                              Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                '/login',
-                                    (route) => false,
-                              );
+                              context.read<AuthenticationRepository>().logOut();
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.orange,

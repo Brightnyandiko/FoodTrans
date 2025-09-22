@@ -8,6 +8,9 @@ class UserProfile extends Equatable {
     required this.email,
     this.profileImageUrl,
     this.hasNotifications = false,
+    this.dateOfBirth,
+    this.gender,
+    this.phoneNumber,
   });
 
   final String id;
@@ -15,6 +18,9 @@ class UserProfile extends Equatable {
   final String email;
   final String? profileImageUrl;
   final bool hasNotifications;
+  final DateTime? dateOfBirth;
+  final String? gender;
+  final String? phoneNumber;
 
   UserProfile copyWith({
     String? id,
@@ -22,6 +28,9 @@ class UserProfile extends Equatable {
     String? email,
     String? profileImageUrl,
     bool? hasNotifications,
+    DateTime? dateOfBirth,
+    String? gender,
+    String? phoneNumber,
   }) {
     return UserProfile(
       id: id ?? this.id,
@@ -29,9 +38,21 @@ class UserProfile extends Equatable {
       email: email ?? this.email,
       profileImageUrl: profileImageUrl ?? this.profileImageUrl,
       hasNotifications: hasNotifications ?? this.hasNotifications,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      gender: gender ?? this.gender,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
     );
   }
 
   @override
-  List<Object?> get props => [id, name, email, profileImageUrl, hasNotifications];
+  List<Object?> get props => [
+    id,
+    name,
+    email,
+    profileImageUrl,
+    hasNotifications,
+    dateOfBirth,
+    gender,
+    phoneNumber,
+  ];
 }

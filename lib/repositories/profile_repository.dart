@@ -1,36 +1,33 @@
-// lib/repositories/profile_repository.dart
+// lib/repositories/profile_repository.dart (Updated)
 import 'dart:io';
 import '../profile/models/user_profile.dart';
 
 class ProfileRepository {
-  // Simulate API calls with delays
-
   Future<UserProfile> getUserProfile() async {
     await Future.delayed(const Duration(milliseconds: 500));
-    return const UserProfile(
+    return UserProfile(
       id: '123',
       name: 'Albert Stevano Bajefski',
-      email: 'Albertstevano@gmail.com',
+      email: 'albertstevano@gmail.com',
       hasNotifications: true,
+      dateOfBirth: DateTime(1999, 6, 19),
+      gender: 'Male',
+      phoneNumber: '+1 325-433-7656',
     );
   }
 
   Future<String> uploadProfileImage(File imageFile) async {
-    // Simulate image upload to cloud storage
     await Future.delayed(const Duration(seconds: 2));
-
-    // In real app, this would upload to Firebase Storage, AWS S3, etc.
-    // Return the uploaded image URL
     return 'https://example.com/uploads/${DateTime.now().millisecondsSinceEpoch}.jpg';
   }
 
   Future<UserProfile> updateUserProfile(UserProfile profile) async {
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 800));
+    // Simulate API call to update user profile
     return profile;
   }
 
   Future<void> deleteAccount() async {
     await Future.delayed(const Duration(seconds: 1));
-    // Simulate account deletion
   }
 }

@@ -102,4 +102,13 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(currentState.copyWith(user: updatedUser));
     }
   }
+
+  // Add this method to lib/profile/cubit/profile_cubit.dart
+
+  void updateUserProfile(UserProfile updatedUser) {
+    final currentState = state;
+    if (currentState is ProfileLoaded) {
+      emit(currentState.copyWith(user: updatedUser));
+    }
+  }
 }

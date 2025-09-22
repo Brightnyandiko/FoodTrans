@@ -30,11 +30,11 @@ environment:
 dependencies:
   authentication_repository:
     path: packages/authentication_repository
-  food_repository:
-    path: packages/food_repository
+#  food_repository:
+#    path: packages/food_repository
   bloc: ^9.0.0
   geolocator: ^9.0.2
-  permission_handler: ^10.4.3
+  permission_handler: ^11.3.1
   equatable: ^2.0.0
   firebase_core: ^3.15.2
   flow_builder: ^0.1.0
@@ -53,6 +53,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.5.3
+  firebase_messaging: ^15.2.10
+  image_picker: ^1.0.4
+  cached_network_image: ^3.3.0
+  intl: ^0.19.0
 
 dev_dependencies:
   bloc_lint: ^0.2.0-dev.0

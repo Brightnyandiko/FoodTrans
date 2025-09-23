@@ -1,0 +1,25 @@
+
+{
+  "settings": "Settings",
+  "profile": "Profile",
+  "pushNotification": "Push Notification",
+  "location": "Location",
+  "language": "Language",
+  "other": "Other",
+  "aboutTickets": "About Tickets",
+  "privacyPolicy": "Privacy Policy",
+  "termsAndConditions": "Terms and Conditions",
+  "english": "English",
+  "spanish": "Spanish",
+  "french": "French",
+  "selectLanguage": "Select Language",
+  "profileSettings": "Profile Settings",
+  "personalData": "Personal Data",
+  "extraCard": "Extra Card",
+  "helpCenter": "Help Center",
+  "requestAccountDeletion": "Request Account Deletion",
+  "addAnotherAccount": "Add another account",
+  "signOut": "Sign Out",
+  "myOrders": "My Orders",
+  "seeAll": "See All"
+}

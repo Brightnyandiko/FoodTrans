@@ -203,7 +203,7 @@ class _PersonalDataViewState extends State<PersonalDataView> {
                   border: Border.all(color: Colors.white, width: 2),
                 ),
                 child: Icon(
-                  user.hasNotifications ? Icons.notifications : Icons.camera_alt,
+                  user.hasNotifications ? Icons.camera_alt_rounded : Icons.camera_alt,
                   size: 16,
                   color: Colors.white,
                 ),

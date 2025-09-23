@@ -3,6 +3,7 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:food_trans/settings/view/settings_page.dart';
 
 import '../cubit/profile_cubit.dart';
 import '../models/user_profile.dart';
@@ -159,7 +160,7 @@ class ProfileView extends StatelessWidget {
                       border: Border.all(color: Colors.white, width: 2),
                     ),
                     child: Icon(
-                      user.hasNotifications ? Icons.notifications : Icons.camera_alt,
+                      user.hasNotifications ? Icons.camera_alt_rounded : Icons.camera_alt,
                       size: 16,
                       color: Colors.white,
                     ),
@@ -527,7 +528,7 @@ class ProfileView extends StatelessWidget {
   }
 
   void _navigateToSettings(BuildContext context) {
-    Navigator.pushNamed(context, '/settings');
+    Navigator.of(context).push(SettingsPage.route());
   }
 
   void _navigateToCards(BuildContext context) {
